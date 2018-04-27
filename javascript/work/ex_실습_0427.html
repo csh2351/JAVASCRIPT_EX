@@ -89,13 +89,35 @@
   <h1 id='hi'>이벤트 처리</h1>
 <script type="text/javascript">
 //화면 로딩이 다 끝나고 나면 "페이지 로딩이 끝났습니다" 라는 문구가 출력되게 함
-window.onload = function loadingCheck(){
 
-  document.getElementById('hi').innerHTML+="페이지 로딩이 끝났습니다.";
     
-  }
+  window.onload=function(){
+             alert("페이지 로딩이 끝났습니다!");
+             var div11=document.getElementById("test");
+
+         };
+         (function(){
+             alert("1..페이지로딩이 끝남!!");
+         })();
+
+
 </script>
 
+<h1>이벤트 객체</h1>
+   <div id='eobj'></div>
+   <button id='bnt'>실행</button>
+   <script>
+       document.getElementById('bnt').
+       addEventListener('click',handler);
+       function handler(e)
+       {
+           var event=e||window.event;
+           for(t in event)
+               console.log("키 : "+t+" 값 : "+event[t]);
+               this.style.backgroundColor='red';
+
+       };
+   </script>
 
 </body>
 
