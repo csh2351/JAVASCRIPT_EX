@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>인코딩</title>
+</head>
+<body>
+    <div id='incode'></div>
+    <button onclick='code()'>실행</button>
+    <script>
+        function code()
+        {
+            var uri="http://www.naver.com?test=한글이야 호호호";
+
+            var esURI=escape(uri);
+            var enURI=encodeURI(uri);
+            var enURIC=encodeURIComponent(uri);
+
+            var doc=document.getElementById('incode');
+            doc.innerHTML+="escape() : "+esURI+"<br>";
+            doc.innerHTML+="encodeURI() : "+enURI+"<br>";
+            doc.innerHTML+="encodeURIComponent() : "+enURIC+"<br>";
+            doc.innerHTML+="디코드 하기!<br>";
+            doc.innerHTML+="unescape() : "+unescape(esURI)+"<br>";
+            doc.innerHTML+="decodeURI() : "+decodeURI(enURI)+"<br>";
+            doc.innerHTML+="decodeURIComponent() : "+decodeURIComponent(enURIC)+"<br>";   
+
+        }
+    </script>
+
+</body>
+</html>

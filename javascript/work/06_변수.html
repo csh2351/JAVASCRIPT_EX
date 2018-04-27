@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>변수</title>
+    <script>
+		function localvari(){
+			var local='지역변수입니다.';
+			entri='전역변수입니다.';
+		}
+        
+        //localvari();
+		//지역변수는 불러올수 없음!!
+		//alert(window.local);
+		//전역변수이기에 불러올 수 있음.
+		//alert(entri);
+
+        //문자열 변수
+        var str='JavaScript';
+        var str1="자바스크립트";
+        console.log(str);
+
+        //대문자로 변경해주는 메소드, 원본변경이 안됨.
+        var upstr=str.toUpperCase();
+        console.log(str.toUpperCase());
+        console.log(str);
+
+        //문자열의 문자갯수를 출력
+        console.log(str.length);
+
+        //문자열의 위치값을 문자로 찾고 출력
+        console.log("basic : "+str.indexOf('a'));
+        console.log("last : "+str.lastIndexOf('a'));
+
+        //문자열의 문자를 위치값으로 찾고 출력
+        console.log("charAt : "+str.charAt(5));
+
+        //문자열 중 내가 원하는 값만 일부만 출력
+        console.log("substring : "+str.substring(0,4));
+
+        //문자열을 특정문자로 구분하여 배열로 출력
+        var str2='이순신, 홍길동, 백종훈, 박정현';
+        var sp=str2.split(',');
+        for(var i=0;i<sp.length;i++)
+            document.write("<h1>splite : "+sp[i]);
+
+        //숫자형
+        var num=19;
+        console.log(num);
+        num=12.5;
+        console.log(num);
+        // var num2=60.5;
+        // console.log(num);
+        // console.log(num2);
+        
+        
+    </script>
+
+</head>
+<body>
+    <h3>Math객체 활용</h3>    
+    <div id='area1'></div>
+    <script>
+        var num1=-123;
+        var num2=123.456;
+        var doc=document.getElementById('area1');
+        doc.innerHTML="절대값 : "+Math.abs(num1)+"<br>";
+        doc.innerHTML+="반올림 : "+Math.round(num2)+"<br>";
+        doc.innerHTML+="내림 : "+Math.floor(num2)+"<br>";
+        doc.innerHTML+="올림 : "+Math.ceil(num2)+"<br>";
+        doc.innerHTML+="랜덤값 : "+Math.random()*10+"<br>";
+        doc.innerHTML+="랜덤값(1~10) : "+Math.floor((Math.random()*10)+1)+"<br>";
+        doc.innerHTML+="NaN출력 : "+(num1-'숫자아님')+"<br>";
+   </script>
+    <h3>기타자료형</h3>    
+    <div id='area2'></div>
+    <script>
+        var doc=document.getElementById('area2');
+        var flag=true;//boolean형 자료형이됨.
+        doc.innerHTML+="boolean출력 : "+flag+"<br>";
+        //자료형 출력!
+        doc.innerHTML+="boolean출력 : "+typeof(flag)+"<br>";
+        var obj={이름:"유병승",나이:19,주소:"경기도 시흥시"};
+        doc.innerHTML+="객체출력 : "+obj["이름"]+obj["나이"]+"<br>";
+        //자료형 출력!
+        doc.innerHTML+="객체 : "+typeof(obj)+"<br>";
+        var func=function(){ alert("난 변수에 저장된 함수")};
+        doc.innerHTML+="함수출력 : "+func+"<br>";
+        //자료형 출력!
+        doc.innerHTML+="함수 : "+typeof(func)+"<br>";
+        func();
+        var unde;
+        doc.innerHTML+="undefined : "+unde+"<br>";
+        //자료형 출력!
+        doc.innerHTML+="undefined : "+typeof(unde)+"<br>";
+        //숫자와 문자
+        var num='10';
+        var str=10;
+        doc.innerHTML+="num : "+num+"<br>";
+        doc.innerHTML+="num자료형 : "+typeof(num)+"<br>"
+        doc.innerHTML+="str : "+str+"<br>";
+        doc.innerHTML+="str자료형 : "+typeof(str)+"<br>"
+
+    </script>
+
+
+
+</body>
+</html>

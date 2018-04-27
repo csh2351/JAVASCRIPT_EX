@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BOM객체</title>
+</head>
+<body>
+    <h1>screen</h1>
+    <div id='sc'></div>
+    <button onclick='test1()'>창출력</button>
+    <script>
+        for(var t in screen){
+            document.getElementById('sc').innerHTML+=t+":"
+                                +screen[t]+"<br>";
+        }
+        console.log("화면높이 : "+screen.height);
+        console.log("화면너비 : "+screen.width);
+        console.log("사용가능높이 : "+screen.availHeight);
+        console.log("사용가능너비 : "+screen.availWidth);
+        console.log("사용가능 색상수 : "+screen.colorDepth);
+        console.log("픽셀당 비트수 : "+screen.pixelDepth);
+        function test1()
+        {
+            var win=open("","","width="+screen.width/2+",height="+screen.heigth/2);
+            setInterval(function(){
+                win.resizeBy(-20,-20);
+                win.moveBy(100,100);
+            },100)
+
+        }
+    </script>
+
+    <h1>location</h1>
+    <button onclick="hreftest()">href이동</button>
+    <button onclick="assigntest()">assign이동</button>
+    <button onclick="reloadtest()">reload이동</button>
+    <button onclick="replacetest()">replace이동</button>
+    <script>
+        function hreftest()
+        {
+            location.href="18_윈도우객체.html";
+        }
+        function assigntest()
+        {
+            location.assign("http://www.iei.or.kr");
+        }
+        function reload()
+        {
+            location.reload();
+        }
+        function replacetest()
+        {
+            location.replace('http://www.daum.net');
+        }
+    </script>
+
+    <h1>navigator</h1>
+    <div id='navi'></div>
+    <script>
+        for(var t in navigator)
+        {
+            document.getElementById('navi').innerHTML+=t+" : "
+                                         +navigator[t]+"<br>";
+        }
+    </script>
+
+
+</body>
+</html>

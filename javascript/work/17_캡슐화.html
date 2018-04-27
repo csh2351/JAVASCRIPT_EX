@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>캡슐화적용</title>
+</head>
+<body>
+    <h1>캡슐화</h1>
+    <div id='cap'></div>
+    <br>
+    <button onclick='cap()'>캡슐화</button>
+    <script>
+        var persons=[];
+        function Person(name,age,addr)
+        {
+            var name=name;
+            var age=age;
+            var addr=addr;
+
+            this.setName=function(inName){name=inName;}
+            this.getName=function(){return name;}
+            this.setAge=function(inAge){age=inAge;}
+            this.getAge=function(){return age;}
+            this.setAddr=function(inAddr){addr=inAddr;}
+            this.getAddr=function(){return addr;}
+
+        }
+        function inputObj()
+        {
+            persons.push(new Person('유병승',19,'경기도시흥'));
+            persons.push(new Person('김두환',38,'서울시종로'));
+            persons.push(new Person('시라소니',48,'함경북도'));
+        }
+        function cap()
+        {
+            inputObj();
+            console.log(persons[0].getName());
+            persons[0].setName("백종훈");
+            console.log(persons[0].getName());
+
+        }    
+    </script>
+    <h1>상속</h1>
+    <div id='inher'></div>
+    <br>
+    <button onclick='inher()'>상속</button>
+    <script>
+        function Person(name,age,addr)
+        {
+            var name=name;
+            var age=age;
+            var addr=addr;
+
+            this.setName=function(inName){name=inName;}
+            this.getName=function(){return name;}
+            this.setAge=function(inAge){age=inAge;}
+            this.getAge=function(){return age;}
+            this.setAddr=function(inAddr){addr=inAddr;}
+            this.getAddr=function(){return addr;}
+        }
+        Person.prototype.pp=function(){
+            return this.getName()+" "+this.getAge()+" "+this.getAddr();
+        }
+        function Student(name, age, addr, kor, eng, math)
+        {
+            this.p=Person;
+            this.p(name, age, addr);
+            var kor=kor;
+            var eng=eng;
+            var math=math;
+
+            this.getKor=function(){return kor;}
+            this.setKor=function(inKor){kor=inKor;}
+            this.getEng=function(){return eng;}
+            this.setEng=function(inEng){eng=inEng;}
+            this.getMath=function(){return math;}
+            this.setMath=function(inMath){math=inMath;}
+        }
+        Student.prototype=Person.prototype;
+        Student.prototype.toString=function(){
+            return this.getName()+" "+this.getAge()+" "+this.getAddr()+" "+this.getKor()+" "+this.getEng()+" "+this.getMath();
+        }
+        function inher()
+        {
+            var s=new Student('유병승',19,'경기도시흥',70,60,50);
+            console.log(s.toString());
+            console.log(s.pp());
+        }
+    </script>
+
+
+    
+</body>
+</html>

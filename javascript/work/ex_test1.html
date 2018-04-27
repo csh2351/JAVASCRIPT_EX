@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>테스트1</title>
+    <style>
+        div{
+            border:1px solid black;
+            height:100px;width:100px
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var target=document.getElementById('answer');
+            var color=confirm("색변경 원츄?");
+            if(color){
+                target.setAttribute("style","background-color:aqua");
+            }
+            target.innerHTML=prompt("전달 원하는 메세지는?");
+            
+        }
+    </script>
+</head>
+<body>
+    <div id='answer'></div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM활용하기</title>
+</head>
+
+<body>
+    <h1>기본요소, 텍스트노드 생성</h1>
+    <div id='ele'></div>
+    <br>
+    <button onclick='createel()'>생성</button>
+    <button onclick='deleteTest()'>지우기</button>
+    <script>
+        count = 0;
+        function createel() {
+            count++;
+            var doc = document.getElementById('ele');
+            var addel = document.createElement('p');
+            var text = document.createTextNode(prompt("내용"));
+            addel.appendChild(text);
+            doc.appendChild(addel);
+        }
+        function deleteTest()
+        {
+            var target=document.getElementsByTagName('p');
+            //배열로 저장 인덱스로 접근가능
+            //document.getElementById('ele').removeChild(target[(target.length-1)]);
+            target[0].parentNode.removeChild(target[(target.length-1)]);
+
+        }
+    </script>
+    <h1>텍스트노드 없는 태그생성</h1>
+    <div id='picture'></div>
+    <br>
+    <button onmouseover="addpic()">이미지추가</button>
+    <button onclick="chanseImg()">이미지추가</button>
+    <script>
+        function addpic() {
+            var doc = document.getElementById('picture');
+            var pic = document.createElement('img');
+            // pic.src="http://img.yonhapnews.co.kr/etc/inner/KR/2018/01/17/AKR20180117116400007_02_i.jpg";
+            // pic.width=300;
+            // pic.height=300;
+            pic.setAttribute("src", "http://img.yonhapnews.co.kr/etc/inner/KR/2018/01/17/AKR20180117116400007_02_i.jpg");
+            pic.setAttribute("width", 50);
+            pic.setAttribute("height", 50);
+            //<img src='~~!' width=300 heigth=300>
+            doc.appendChild(pic);
+        }
+        function chanseImg()
+        {
+            var pic=document.getElementsByTagName('img');
+            for(var i=0;i<pic.length;i++)
+            {
+                pic[i].style.transform='scale(2)';
+                pic[i].style.tansition="all 2s";
+            }
+        }
+    </script>
+    <h1>table동적으로 추가</h1>
+    <div>
+        <table border=1 id='ta'>
+        </table>
+    </div>
+    <br>
+    <button onclick="addTr()">행추가</button>
+    <script>
+        function addTr() {
+            var table = document.getElementById('ta');
+            // td.appendChild(text);
+            // //<td>내용</td>
+            // tr.appendChild(td);
+            // //<tr><td>내용</td></tr>
+            // table.appendChild(tr);
+            // /*<table>
+            //     <tr><td>내용</td></tr>
+            //   </table>
+            // */
+            input1=prompt("행");
+            input2=prompt("열");
+            for (var n = 0; n < input1; n++)
+            {
+                var tr = document.createElement('tr');
+                for (var i = 0; i < input2; i++)
+                {
+                    var td = document.createElement('td');
+                    var text = document.createTextNode("내용");
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+        }
+    </script>
+    <h1>스타일 변경</h1>
+    <div id='st'></div>
+    <br>
+    <button onclick="change()">변경</button>
+    <script>
+        function change()
+        {
+            var doc=document.getElementById('st');
+            doc.style.width='200px';
+            doc.style.height='200px';
+            doc.style.backgroundColor="red";
+            // doc.style.transform="translate(100px,100px)";
+            doc.style.transform="rotate(400deg)";
+            doc.style.transition="all 2s";
+        }
+    </script>
+
+
+</body>
+
+</html>

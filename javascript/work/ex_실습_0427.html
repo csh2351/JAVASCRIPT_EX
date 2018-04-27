@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>
+    0427_실습예제
+  </title>
+</head>
+
+<body>
+  <h1 text-align="center">테이블 동적으로 추가</h1>
+
+  <button type="button" name="button" onclick="addTable()">추가</button>
+
+  <script type="text/javascript">
+    function addTable() {
+
+      var row = prompt("행 개수는?");
+      var col = prompt("열 개수는?");
+
+      var Newtable = document.createElement('table');
+      var table = document.body.appendChild(Newtable);
+      table.setAttribute('style', "border:1px solid black");
+      for (var n = 0; n < row; n++) {
+
+        var tr = document.createElement('tr');
+
+        for (var i = 0; i < col; i++) {
+          var td = document.createElement('td');
+          tr.appendChild(td);
+          var text = document.createTextNode("내용");
+          td.appendChild(text);
+        }
+        table.appendChild(tr);
+      }
+
+
+
+    }
+  </script>
+  <h1>스타일 변경</h1>
+  <div id='st'></div>
+  <br>
+  <button onclick="change()">변경</button>
+  <script>
+    function change() {
+      var doc = document.getElementById('img');
+      doc.style.width = '200px';
+      doc.style.height = '200px';
+      doc.style.backgroundColor = "red";
+      //doc.style.transform="translate(100px,100px)";
+      doc.style.transition = "all 2s";
+      doc.style.transform = "rotate(400deg)";
+      doc.style.transform = "scale(2,2)"
+    }
+  </script>
+
+  <h1>텍스트노드 없는 태그생성</h1>
+  <div id='picture'></div>
+  <br>
+  <button onmouseover="addpic()">이미지추가</button>
+  <button onclick="deletepic()">이미지삭제</button>
+  <script>
+    function addpic() {
+
+
+      var doc = document.getElementById('picture');
+      var pic = document.createElement('img');
+      pic.setAttribute('id', 'img');
+      // pic.src="http://img.yonhapnews.co.kr/etc/inner/KR/2018/01/17/AKR20180117116400007_02_i.jpg";
+      // pic.width=300;
+      // pic.height=300;
+      pic.setAttribute("src", "http://img.yonhapnews.co.kr/etc/inner/KR/2018/01/17/AKR20180117116400007_02_i.jpg");
+      pic.setAttribute("width", 50);
+      pic.setAttribute("height", 50);
+      //<img src='~~!' width=300 heigth=300>
+      doc.appendChild(pic);
+    }
+
+    function deletepic() {
+
+      var doc = document.getElementById('img');
+
+      document.getElementById('picture').removeChild(doc);
+    }
+  </script>
+  <hr>
+  <h1 id='hi'>이벤트 처리</h1>
+<script type="text/javascript">
+//화면 로딩이 다 끝나고 나면 "페이지 로딩이 끝났습니다" 라는 문구가 출력되게 함
+window.onload = function loadingCheck(){
+
+  document.getElementById('hi').innerHTML+="페이지 로딩이 끝났습니다.";
+    
+  }
+</script>
+
+
+</body>
+
+</html>

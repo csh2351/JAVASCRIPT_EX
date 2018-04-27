@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>데이터 출력하기!</title>
+    <script> 
+        var str="<h1>자바스크립트에 세상에 오신걸환영합니다.</h1>";
+            document.write("<h1>자바스크립트에 세상에 오신걸환영합니다.</h1>");
+            window.alert("알림창으로 출력!");
+            alert(document.body.innerHTML);
+            document.body.innerHTML+="테스트";
+        window.onload=function(){
+            document.getElementById('test').innerHTML="innerHTML을 사용하여 출력!";
+            //document.body.innerHTML=document.body.innerHTML+"innerHTML을 사용하여 출력!"
+            console.log("콘솔에 출력하는 방식입니다!");
+            console.log(str);
+        }
+    </script>
+
+</head>
+<body>
+    <div id='test'> </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>연산자</title>
+</head>
+<body>
+    <script>
+     document.write("<h1> == / != 비교연산자</h1>");
+     document.write("3=='3' : "+(3=='3')+"<br>");
+     document.write("3==3 : "+(3==3)+"<br>");
+     document.write("3!='3' : "+(3!='3')+"<br>");
+     document.write("3!=3 : "+(3!=3)+"<br>");
+
+     document.write("<h1> === / !== 비교연산자</h1>");
+     document.write("3==='3' : "+(3==='3')+"<br>");
+     document.write("3===3 : "+(3===3)+"<br>");
+     document.write("3!=='3' : "+(3!=='3')+"<br>");
+     document.write("3!==3 : "+(3!==3)+"<br>");
+
+     document.write("<h1>삼항연산자</h1>");
+     var input=prompt("숫자입력 : ");
+     input%2==0?input<10?document.write("10보다 작은짝수<br>"):document.write("10보다 큰짝수<br>"):document.write("홀수<br>");     
+
+    document.write("<h1>짧은 연산자</h1>");
+    input%2==0&&document.write("짝수<br>");
+    input%2==0||document.write("홀수<br>");
+    </script>
+    <h1>switch</h1>
+    <div id='time'></div><br>
+    <button onclick='start1()'>실행</button>
+    <script>
+        function start1(){
+            setInterval(timetest,600000);
+        };
+
+        function timetest()
+        {
+            var time=new Date().getMinutes();
+            var hour=new Date().getHours();
+            var doc=document.getElementById('time');
+            console.log(time);
+            console.log(hour);
+            if(hour>12)
+            {
+                switch(time)
+                {
+                    case 50 : alert('쉬는시간입니다. 편히쉬세요');break;
+                    default : alert("수업시간입니다 열공하세요");break;
+
+                }
+            }
+            else
+            {
+                switch(time)
+                {
+                    case 20 : alert('쉬는시간입니다. 편히쉬세요');break;
+                    default : alert("수업시간입니다 열공하세요");break;
+                }
+            }
+
+        };
+    
+    </script>
+
+
+</body>
+</html>

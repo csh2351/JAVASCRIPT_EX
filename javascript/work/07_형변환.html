@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>형변환</title>
+</head>
+<body>
+    <div id='area'></div>
+    <button onclick='test()'>실행</button>
+    <script>
+        function test()
+        {
+            var test1=7+7;
+            var test2=7+"7";
+            var test3="7"+7;
+            var test4="7"+"7";
+            var test5=7+7+"7";
+            var test6=7+"7"+7;
+            var test7="7"+7+7;
+            var test8="7"+(7+7);
+
+            var doc=document.getElementById('area');
+
+            doc.innerHTML+="7+7="+test1+"<br>";
+            doc.innerHTML+="7+'7'="+test2+"<br>";
+            doc.innerHTML+="'7'+7="+test3+"<br>";
+            doc.innerHTML+="'7'+'7'="+test4+"<br>";
+            doc.innerHTML+="7+7+'7'="+test5+"<br>";
+            doc.innerHTML+="7+'7'+7="+test6+"<br>";
+            doc.innerHTML+="'7'+7+7="+test7+"<br>";
+            doc.innerHTML+="'7'+(7+7)="+test8+"<br>";
+            doc.innerHTML+="자료형 : "+typeof(test8);
+            
+            doc.innerHTML+="<h1>이외의 연산</h1>";
+            doc.innerHTML+="7-'7'="+(7-'7')+"<br>";
+            doc.innerHTML+="자료형 : "+typeof(7-'7');
+        }   
+    </script>
+    <h1>숫자형으로 강제적 형변환</h1>
+    <div id='area1'></div><br>
+    <button onclick='test2()'>실행</button>
+    <script>
+        function test2()
+        {
+            var money='1000원';
+            var dollor='1.5 USD';
+            var doc=document.getElementById('area1');
+            doc.innerHTML+='Number(money) : '+Number(money)+"<br>";
+            doc.innerHTML+='Number(dollor) : '+Number(dollor)+"<br>";
+            doc.innerHTML+='parseInt(money) : '+parseInt(money)+"<br>";
+            doc.innerHTML+='parseInt(dollor) : '+parseInt(dollor)+"<br>";
+            doc.innerHTML+='ParseFloat(money) : '+parseFloat(money)+"<br>";
+            doc.innerHTML+='ParseFloat(dollor) : '+parseFloat(dollor)+"<br>";
+            doc.innerHTML+='parseInt("FF",16) : '+parseInt("FF",16)+"<br>";
+            doc.innerHTML+='parseInt("10",2) : '+parseInt("10",2)+"<br>";
+        }
+    </script>
+
+
+</body>
+</html>

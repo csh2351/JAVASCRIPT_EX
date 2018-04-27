@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>함수선언</title>
+    <script>
+        test();
+        //선언적메소드
+        function test()
+        {
+            alert("난 선언적 함수야!");
+        };
+        //익명함수선언
+        var test1=function(){
+            alert("난 익명함수야!");
+        };
+        test1();
+        //자동실행 익명함수
+ 
+
+
+    
+    </script>
+</head>
+<body>
+    <div id='test'></div>
+    <script>
+    (function(){
+    var doc=document.getElementById('test');
+    doc.innerHTML="여기를 변경";
+    doc.setAttribute('style',"background-color:red");
+    })();//function aa() aa();
+    </script>
+    <h1>매개변수가 있는 함수</h1>
+    <div id='argu'></div>
+    <br>
+    <button onclick='argutest(prompt("이름입력"))'>매개변수</button>
+    <button onclick='argutest()'>매개변수없이 호출</button>
+    <button onclick='argutest("박보영",prompt("이름입력"))'>매개변수없이 호출</button>
+    <script>
+        function argutest(name)
+        {
+            var doc=document.getElementById('argu');
+            doc.innerHTML="당신의 이름은 "+name+"입니까?";
+        }
+
+    </script>
+   <h1>자기자신을 매개변수(this)</h1>
+   <div id='argu1'></div>
+   <br>
+   <button onclick='argu1(this)'>JavaScript</button>
+   <script>
+       function argu1(obj)
+       {
+           var doc=document.getElementById('argu1');
+           doc.innerHTML=obj;
+           console.log(obj);
+           obj.innerHTML='졸지말고 공부하자!';
+       }
+   </script>
+    <h1>리턴값확인</h1>
+    <div id='re'></div>
+    <br>
+    <button onclick='returntest()'>리턴실행</button>
+    <button onclick='returntest2()'>리턴값 없는 매소드</button>
+    <script>
+        function returntest()
+        {
+            document.getElementById('re').innerHTML=printName();
+        }
+        function returntest2()
+        {
+            document.getElementById('re').innerHTML=empty();
+        }
+        function printName()
+        {
+            return prompt("이름");
+        }
+        function empty()
+        {
+            return;
+        }
+    </script>
+
+    <h1>가변인자 함수</h1>
+    <div id='varifunc'></div>
+    <br>
+    <button onclick='varifunc(1,2,3,4,5)'>가변인자함수</button>
+    <script>
+        function varifunc(){
+            var str=0;
+            for(var i=0;i<arguments.length;i++)
+            {
+                str+=arguments[i];
+            }
+            document.getElementById('varifunc').innerHTML=str;
+        }
+    </script>
+
+    <h1>함수매개변수</h1>
+    <div id='funcargu'></div>
+    <br>
+    <button onclick='funcargu(printName)'>선언적 함수매개변수</button>
+    <button onclick='funcargu1()'>익명함수 매개변수</button>
+    <script>
+    function printName()
+    {
+        return prompt("이름");
+
+    }
+    function funcargu(f1)//f1==printName동일
+    {
+        document.getElementById('funcargu').innerHTML=f1();
+    }
+    function funcargu1()
+    {
+        printFood(function(){
+            return prompt("좋아하는음식");
+        })
+    }
+    function printFood(f1)
+    {
+        document.getElementById('funcargu').innerHTML+=f1();
+    }
+    </script>
+    <h1>리턴함수</h1>
+    <div id='refunc'></div>
+    <br>
+    <button onclick='refunc()'>리턴익명함수</button>
+    <!--(function(){----})();-->
+    <script>
+        function refunc()
+        {
+            return function(){
+                alert("리턴된 익명함수 실행!!");
+            }
+        }
+        var func=refunc();
+        func();
+        
+
+    </script>
+
+
+
+
+</body>
+</html>
+

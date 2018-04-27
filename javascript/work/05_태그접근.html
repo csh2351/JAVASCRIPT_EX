@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>태그에 접근하기</title>
+</head>
+<body>
+    <h1>태그로 접근하기</h1>
+    <h2>id로 접근하기</h2>
+    <div id='area1' class='area'></div>
+    <button onclick="acessId()">아이디로접근</button>
+    <script>
+        function acessId(){
+            var area1=document.getElementById("area1");
+            area1.style.backgroundColor="yellow";
+            area1.innerHTML+="아이디로 접근가능";
+
+        }
+    </script>
+    <hr>
+
+    <h3>태그명으로 접근</h3>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+    <button onclick="acessTag()">태그명 접근</button>
+    <script>
+        function acessTag(){
+            var list=document.getElementsByTagName("li");
+            var changeColor=50;
+
+            for(var i=0;i<list.length;i++)
+            {
+                list[i].style.backgroundColor="rgb(130,220,"+changeColor+")";
+                changeColor+=50;
+            }
+        }
+    </script>
+    <h3>name으로 접근</h3>
+        <form>
+            <fieldset>
+                <legend>취미</legend>
+                <table>
+                    <tr>
+                        <td><input type="checkbox" name='hobby' value='game'>게임</td>
+                        <td><input type="checkbox" name='hobby' value='music'>음악감상</td>
+                        <td><input type="checkbox" name='hobby' value='movie'>영화감상</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name='hobby' value='reading'>독서</td>
+                        <td><input type="checkbox" name='hobby' value='travel'>여행</td>
+                        <td><input type="checkbox" name='hobby' value='exercise'>운동</td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+        <div id='area2' class='area'></div>
+        <button onclick='acessName()'>name으로 접근</button>
+        <script>
+            function acessName(){
+                var names=document.getElementsByName("hobby");
+
+                var checkItem='';
+                for(var i in names)
+                {
+                    if(names[i].checked==true)
+                    {
+                        checkItem+=names[i].value+"선택함<br>";
+                    }
+                }
+                document.getElementById("area2").innerHTML=checkItem;
+            }
+        </script>
+
+
+
+
+</body>
+</html>

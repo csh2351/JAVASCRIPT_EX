@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>윈도우 객체</title>
+  </head>
+  <body>
+    <h1>윈도우 오픈</h1>
+    <button type="button" name="button" onclick="test()">기본 새창</button>
+
+    <button type="button" name="button" onclick="test1()">페이지 새창</button>
+
+    <button type="button" name="button" onclick="test2()">빈페이지 새창</button>
+
+    <script type="text/javascript">
+    function test(){
+       window.open('http://www.google.com','구글','width=200,height=200');
+
+    }
+    function test1(){
+      window.open('17_캡슐화.html','캡슐화');
+
+    }
+    function test2(){
+      var win= window.open('','popup','width=500,height=500');
+      win.document.write("<html><head></head><body>빈페이지 새창</body></html>");
+
+    }
+
+    </script>
+    <hr>
+    <h2>Set Time out</h2>
+    <!--일정 시간 후에 지정된 함수가 한번만 실행 되는 것-->
+<button type="button" name="button" onclick="test3()">실행</button>
+<button type="button" name="button" onclick="test4()">닫기</button>
+<script type="text/javascript">
+
+function test3(){
+setTimeout(function () {
+  alert("3초 뒤 켜짐");
+},3000);
+}
+function test4(){
+window.close();
+
+}
+
+</script>
+
+<h3>@실습문제 : 타이머만들기</h3>
+<p>완료메세지와 타이머(초)를 매개인자로 받는 타이머함수 만들기</p>
+<input type="text" id="doneMsg" placeholder="알림메세지를 작성하세요.">
+<input type="number" id="sec" style="width:50px;"> 초
+<button type="button" onclick="orderTimer(doneMsg,sec)">타이머생성</button>
+<script>
+function mkTimer(msg, n){
+    setTimeout(function(){
+        alert(msg);
+    },n*1000)
+}
+
+function orderTimer(doneMsg,sec){
+
+    mkTimer(doneMsg.value, sec.value);
+    alert("타이머가 생성되었습니다.")
+}
+</script>
+
+
+<hr><h2>Set Interval</h2>
+
+<button type="button" onclick="Interval()">인터벌타이머생성</button>
+<div id="clock">
+
+</div>
+<script type="text/javascript">
+  function Interval(){
+  var doc =  document.getElementById('clock');
+    window.setInterval(function () {
+      var date = new Date();
+      doc.innerHTML=date.getHours()+" : " +date.getMinutes() +" : " +date.getSeconds();
+    }, 1000);
+  }
+</script>
+
+
+  </body>
+</html>

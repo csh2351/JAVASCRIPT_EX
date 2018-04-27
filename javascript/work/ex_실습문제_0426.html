@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>0426 실습 예제</title>
+  <style media="screen">
+    table {
+      border: 1px solid black;
+      width: 50% height:300px;
+
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+    }
+
+    .tr {
+      background-color: rgb(241, 239, 184);
+      color: orange;
+      font-weight: bold;
+      text-align: right;
+      width: 150px;
+    }
+  </style>
+  <script type="text/javascript">
+    function OpenCheck(chk) {
+      var obj = document.getElementsByName("main");
+      var obj2 = document.getElementsByName("check");
+      var rainbowColor = document.getElementsByName('rainbowColor');
+      for (var i = 0; i < obj.length; i++) {
+        if (obj[i] != chk) {
+          obj[i].checked = false;
+        }
+        if (obj2[i] != chk) {
+          obj2[i].checked = false;
+        }
+      }
+      for (var i = 0; i < rainbowColor.length; i++) {
+        if (rainbowColor[i] != chk) {
+          rainbowColor[i].checked = false;
+        }
+        if (rainbowColor[i] == chk) {
+          ColorChange(rainbowColor[i]);
+        }
+      }
+
+    function allchecked() {
+      var doc = document.getElementById('all');
+      var array = document.getElementsByName('check');
+      for (var i = 0; i < array.length; i++) {
+        if (doc.checked == true) {
+          array[i].checked = true;
+        } else {
+          array[i].checked = false;
+        }
+      }
+    }
+
+    function ColorChange(color) {
+      document.getElementById('tablee').setAttribute('style', "background-color:" + color.value);
+    }
+
+    }
+  </script>
+</head>
+
+<body>
+  <h2 align='center'>거래처 등록</h2>
+  <form class="" action="index.html" method="post">
+    <table align='center'>
+      <tr>
+        <td class='tr'>거래처명</td>
+        <td> <label> <input type="text" name="" value="" size= "30px"> </label> </td>
+      </tr>
+      <tr>
+        <td class='tr'>주소</td>
+        <td> <label> <input type="text" name="" value="" size ='70px'> </label> </td>
+      </tr>
+      <tr>
+        <td class='tr'>전화번호</td>
+        <td> <label> <input type="text" name="" value="" size ='40px'> </label> </td>
+      </tr>
+      <tr>
+        <td class='tr'>품명(중고품)</td>
+        <td>
+          <label> <input type="checkbox" name="main" value="" onclick="OpenCheck(this)"> 메인보드</label>
+          <label> <input type="checkbox" name="main" value="" onclick="OpenCheck(this)"> 모니터</label>
+          <label> <input type="checkbox" name="main" value="" onclick="OpenCheck(this)"> 하드디스크</label>
+          <label> <input type="checkbox" name="main" value="" onclick="OpenCheck(this)"> 메모리</label>
+          <label> <input type="checkbox" name="main" value="" onclick="OpenCheck(this)"> CPU</label>
+        </td>
+      </tr>
+      <tr>
+        <td class='tr'>
+
+          <label><font size="2px" color="blue">모두선택/해제</font> <input type="checkbox" id="all" value="" onclick="allchecked()"></label>
+
+          <p>품명(수입산)</p>
+        </td>
+        <td>
+          <label> <input type="checkbox" name="check" value=""onclick="OpenCheck(this)"> 메인보드</label>
+          <label> <input type="checkbox" name="check" value=""onclick="OpenCheck(this)"> 모니터</label>
+          <label> <input type="checkbox" name="check" value="check"onclick="OpenCheck(this)"> 하드디스크</label>
+          <label> <input type="checkbox" name="check" value="check"onclick="OpenCheck(this)"> 메모리</label>
+          <label> <input type="checkbox" name="check" value="check"onclick="OpenCheck(this)"> CPU</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align='center'>
+          <button type="button" name="button">등록</button>
+          <button type="button" name="button">취소</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <hr>
+
+  <h2 align='center'>rainbowColor</h2>
+
+
+  <table id ='tablee' align='center'>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr>
+      <td>전체 선택 </td>
+      <td>
+        <input type="checkbox" name="rainbowColor" value="red" onclick="OpenCheck(this)"> 빨
+        <input type="checkbox" name="rainbowColor" value="orange" onclick="OpenCheck(this)"> 주
+        <input type="checkbox" name="rainbowColor" value="yellow" onclick="OpenCheck(this)">노
+        <input type="checkbox" name="rainbowColor" value="green" onclick="OpenCheck(this)"> 초
+        <input type="checkbox" name="rainbowColor" value="blue" onclick="OpenCheck(this)"> 파
+        <input type="checkbox" name="rainbowColor" value="navy" onclick="OpenCheck(this)">남
+        <input type="checkbox" name="rainbowColor" value="purple" onclick="OpenCheck(this)"> 보</td>
+    </tr>
+    <tr class='td'>
+      <td colspan="2">
+        <button type="button" name="button">submit</button>
+        <button type="button" name="button">reset</button>
+      </td>
+    </tr>
+
+  </table>
+</body>
+
+</html>

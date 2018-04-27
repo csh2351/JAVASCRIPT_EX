@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>객체</title>
+    <script>
+        var Person={
+            이름:'유병승',
+            나이:19,
+            주소:'경기도 시흥시',
+            직업:'강사'
+        }    
+    </script>
+</head>
+<body>
+    <h1>객체 선언 및 접근</h1>
+    <div id='obj'></div>
+    <br>
+    <button onclick='obj1()'>[]로 접근</button>
+    <button onclick='obj2()'>.으로 접근</button>
+    <button onclick='obj3()'>함수 접근</button>
+    <button onclick='obj4()'>함수 접근</button>
+    <button onclick='obj5()'>전체 접근</button>
+    <button onclick='obj6()'>특수문자,띄어쓰기 접근</button>
+    <br>
+    <script>
+        Person={
+            name:'유병승',
+            age:19,
+            addr:'경기도 시흥',
+            job:'강사',
+            pp:function(){
+                return "이름 : "+this.name+" 나이 : "+this.age+" 주소 : "+this.addr+" 직업 : "+this.job;
+            },
+            hobby:['축구','공부'],
+            'v*^.~* ~m-.-m~':'추억의 이모티콘'
+        }
+        var doc=document.getElementById('obj');
+        function obj1()
+        {
+            doc.innerHTML=Person['name']+" "+Person['age'];
+        }
+        function obj2()
+        {
+            doc.innerHTML=Person.addr+" "+Person.job;
+        }
+        function obj3()
+        {
+            //doc.innerHTML=Person['pp']();
+            doc.innerHTML=Person.pp();
+        }
+        function obj4()
+        {
+            for(var i=0;i<Person['hobby'].length;i++)
+            {
+                doc.innerHTML+=Person['hobby'][i];  
+            }
+            // for(var i=0;i<Person.hobby.length;i++)
+            // {
+            //     doc.innerHTML+=Person.hobby[i];  
+            // }
+            //doc.innerHTML=Person.hobby[0];
+            //doc.innerHTML+=Person.hobby[1];
+        }
+        function obj5()
+        {
+            for(var t in Person)
+            {
+                if(t!='pp')
+                doc.innerHTML+=Person[t]+" ";
+            }
+        }
+        function obj6()
+        {
+            doc.innerHTML+=Person['v*^.~* ~m-..-m~'];
+            //console.log(Person.v*^.~* ~m-..-m~);
+        }
+    </script>
+    <h1>in/with</h1>
+    <div id='inwith'></div>
+    <br>
+    <button onclick="inTest()">in실행</button>
+    <button onclick="withTest()">with실행</button>
+    <hr>
+    <script>
+        //var doc=document.getElementById('inwith');
+        function inTest()
+        {
+            document.getElementById('inwith').innerHTML+="name : "+('name' in Person)+"<br>";
+            document.getElementById('inwith').innerHTML+="beak : "+('beak' in Person)+"<br>";
+            document.getElementById('inwith').innerHTML+="v*^.~* ~m-.-m~ : "+('v*^.~* ~m-.-m~' in Person)+"<br>";
+        }
+        function withTest()
+        {
+            Person.name;
+            with(Person)
+            {
+                document.getElementById('inwith').innerHTML+=name+" "+age+" "+addr+"<br>";
+                document.getElementById('inwith').innerHTML+=pp();
+            }
+        }
+    </script>
+    <h1>객체 속성 추가 및 삭제</h1>
+    <div id='addobj'></div>
+    <br>
+    <button onclick='addobj1()'>객체속성추가</button>
+    <button onclick='deleteobj()'>객체속성추가</button>
+    <hr>
+    <script>
+        //var doc=document.getElementById('addobj');
+        function addobj1()
+        {
+            for(var i in Person)
+            {
+                document.getElementById('addobj').innerHTML+="원본 : "+i+" ";
+            }
+        
+            Person.height=180.5;
+            Person.weight=60.5;
+
+            for(var i in Person)
+            {
+                document.getElementById('addobj').innerHTML+="추가 후 : "+i+" ";
+            }
+        }
+        function deleteobj()
+        {
+            for(var k in Person)
+            {
+                document.getElementById('addobj').innerHTML+="원본 : "+k+" ";
+            }
+            delete(Person.height);
+
+            for(var k in Person)
+            {
+                document.getElementById('addobj').innerHTML+="삭제후 : "+k+" ";
+            }
+        }
+    </script>
+
+    
+</body>
+</html>

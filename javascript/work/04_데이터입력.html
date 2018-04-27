@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>데이터입력</title>
+    <script>
+        window.onload=function(){
+            var flag=confirm("당신은 성인입니까?");
+            var t=document.getElementById('msg');
+            if(flag)
+            {
+                t.setAttribute("style","background-color:red");
+                t.innerHTML="젊음을 불사르세요!";
+            }
+            else{
+                t.setAttribute("style","background-color:green");
+                t.innerHTML="아직 공부를 열심히 해야죠!";
+            };
+            console.log(flag);
+            var name=prompt("당신의 이름은?");
+            t.innerHTML+="당신이 R반의 히어로"+name+"이에요?!!";
+            console.log(name); 
+    }
+    </script>
+    
+
+</head>
+<body>
+    <div id='msg'></div>
+</body>
+</html>

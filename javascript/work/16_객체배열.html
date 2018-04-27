@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>객체배열</title>
+</head>
+<body>
+    <h1>배열 대입하기</h1>
+    <div id='arrobj'></div>
+    <br>
+    <button onclick='arradd()'>배열객체에 추가</button>
+    <hr>
+    <script>
+        var arrObj=[];
+        function arradd()
+        {
+            arrObj.push({이름:'유병승',나이:"19",주소:"경기도시흥"});
+            arrObj.push({이름:'김두환',나이:"34",주소:"서울시종로"});
+            arrObj.push({이름:'시라소니',나이:"38",주소:"함경북도"});
+            arrObj.push({이름:'쌍칼',나이:"40",주소:"서울시종로"});
+
+            for(var i=0;i<arrObj.length;i++)
+            {
+                for(var t in arrObj[i]) 
+                {
+                    document.getElementById('arrobj').innerHTML+=arrObj[i][t]+" ";
+                }
+                document.getElementById('arrobj').innerHTML+="<br>";
+            }
+        }
+    </script>
+    <h1>함수를 이용한 객체생성</h1>
+    <div id='createobj'></div>
+    <br>
+    <button onclick='cobj()'>함수를 이용한 객체생성</button>
+    <button onclick='cobj1()'>생성자를 이용한 객체생성</button>
+    <hr>
+    <script>
+        function cobj()
+        {
+            arrObj.push(inputData('유병승',19,'경기도시흥'));
+            arrObj.push(inputData('김두환',38,'서울시종로'));
+            arrObj.push(inputData('시라소니',48,'함경북도'));
+
+            printobj();
+        }
+        function cobj1()
+        {
+            arrObj.push(new Person('유병승',19,'경기도시흥'));
+            arrObj.push(new Person('김두환',38,'서울시종로'));
+            arrObj.push(new Person('시라소니',48,'함경북도'));
+
+            printobj();
+        }
+        function inputData(name, age, addr)
+        {
+            var Person={
+                name:name,
+                age:age,
+                addr:addr,
+                pp:function(){
+                    return this.name+" "+this.age+" "+this.addr;
+                }       
+            }
+            return Person;
+        }
+        function printobj()
+        {
+            for(var i=0;i<arrObj.length;i++)
+            {
+                for(var t in arrObj[i]) 
+                {
+                    document.getElementById('createobj').innerHTML+=arrObj[i][t]+" ";
+                }
+                document.getElementById('createobj').innerHTML+="<br>";
+            }
+        }
+        function Person(name,age,addr)
+        {
+            this.name=name;
+            this.age=age;
+            this.addr=addr;
+        }
+        Person.prototype.pp=function(){
+                return this.name+" "+this.age+" "+this.addr;
+            }
+    </script>
+
+    
+</body>
+</html>

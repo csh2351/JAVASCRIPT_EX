@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이벤트처리</title>
+    <style>
+        div{
+            width:100%;
+            height:100px;
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>고전이벤트처리</h1>
+    <div id='e1'></div>
+    <br>
+    <script>
+        var div1=document.getElementById('e1');
+        div1.onclick=function()
+        {
+            this.innerHTML+="div1눌렸습니다.";
+            this.onclick=null;
+        }
+    </script>
+
+Enter your name: <input type="text" onfocus="myFunction(this)" id='test'>
+
+<p>When the input field gets focus, a function is triggered which changes the background-color.</p>
+
+<script>
+function myFunction(x) {
+    x.style.background = "yellow";
+    document.getElementById('test').value='하하하하';
+}
+</script>
+
+    <h1>addlistener</h1>
+    <button id="test1">test실행</button>
+    <button id="test2">test2실행</button>
+    <script>
+        var te=document.getElementById('test1');
+        te.addEventListener('mouseover',eventHandle);
+        te.addEventListener('click',changeTest);
+        var flag=true;
+        function changeTest()
+        {
+            if(flag)
+            {
+                te.style.backgroundColor="red";
+                flag=false;
+            }
+            else
+            {
+                te.style.backgroundColor="green";
+                flag=true;
+            }
+        }
+
+        function eventHandle()
+        {
+            if(flag)
+            {
+                document.getElementById('test1').innerHTML="고고고!!하하!"
+                flag=false;
+            }
+            else
+            {
+                document.getElementById('test1').innerHTML="스~톱!!하하!"
+                flag=true;
+            }
+        }
+        var te2=document.getElementById("test2");
+        te2.addEventListener('click',function(){
+            te.removeEventListener('mouseover',eventHandle);
+        });
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

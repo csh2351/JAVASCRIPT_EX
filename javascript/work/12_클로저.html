@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>클로저</title>
+</head>
+<body>
+    <h1>클로저 기본예제</h1>
+    <div id='closure'></div>
+    <br>
+    <button onclick='closure1(prompt("이름"))()'>기본클로저</button>
+    <button onclick='clo2()'>실행</button>
+    <hr>
+    <script>
+        function closure1(name)
+        {
+            var closureprint=name+"님 반갑습니다.";
+            return function()
+            {
+                alert(closureprint);
+            }
+        }
+        function closure2(name)
+        {
+            var pp=name+"님 지역변수를 활용하려면 클로저를 통해 함수로 접근해야합니다.";
+            return function(){
+                return pp;
+            }
+        }
+        function clo2()
+        {
+            var tt=closure2("박보영");
+            document.getElementById('closure').innerHTML=tt();
+        }
+    </script>
+    <h1>카운트 만들기!</h1>
+    <div id='counter'></div>
+    <button onclick='count()'>숫자세기!</button>
+    <hr>
+    <script>
+        function docounter()
+        {
+            var cnt=0;
+            var f=function(){
+                document.getElementById('counter').innerHTML=cnt++;
+            }
+            return f;
+        }
+        var count=docounter();
+    
+    </script>
+
+
+</body>
+</html>

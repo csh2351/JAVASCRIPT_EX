@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>isinfinity와 NaN</title>
+</head>
+<body>
+    <h1>infinity</h1>
+    <div id='infi'></div>
+    <button onclick='inifi()'>실행</button>
+    <script>
+        function inifi()
+        {
+            var num1=10/0;
+            var num2=10/'a';
+
+            var doc=document.getElementById('infi');
+
+            doc.innerHTML+="10/0 : "+num1+"<br>";
+            doc.innerHTML+="10/'a' : "+num2+"<br>";
+            doc.innerHTML+="num1 == Infinity : "+(num1==Infinity)+"<br>";
+            doc.innerHTML+="num2 == Infinity : "+(num2==Infinity)+"<br>";
+            doc.innerHTML+="isFinite : "+(isFinite(num1))+"<br>";       
+            doc.innerHTML+="isNaN : "+(isNaN(10))+"<br>";
+            doc.innerHTML+="NaN=='a' : "+(isNaN('a'))+"<br>";
+        }
+    
+    </script>
+
+    
+</body>
+</html>
