@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원가입 유효성검사</title>
+    <style>
+        table#enroll{
+            border-spacing:10px;
+        }
+        table#enroll th{
+            text-align:right;
+        }
+        .phone{
+            width:30px;
+        }
+        span.ref{
+            color:red;
+        }
+        .short{
+            width:50px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>유효성검사</h1>
+    <form action="" method='post' onsubmit='return validate()'>
+        <table id="enroll">
+            <tr>
+                <th>아이디 <span class='ref'>*</span></th>
+                <td>
+                    <input type='text' name='userid' id='userid'>
+                </td>
+            </tr>
+
+            <tr>
+                    <th>패스워드 <span class='ref'>*</span></th>
+                    <td>
+                        <input type='password' name='pw' id='pw'>
+                    </td>
+            </tr>
+            <tr>
+                    <th>패스워드확인</th>
+                    <td>
+                        <input type='password' name='pw1' id='pw1'>
+                    </td>
+            </tr>
+            <tr>
+                    <th>이름 <span class='ref'>*</span></th>
+                    <td>
+                        <input type='text' name='username' id='username'>
+                    </td>
+            </tr>
+
+            <tr>
+                    <th>주민번호 <span class='ref'>*</span></th>
+                    <td>
+                        <input type='text' name='ssn1' id='ssn1' class='short'>-
+                        <input type='text' name='ssn2' id='ssn2' class='short'>
+                    </td>
+            </tr>
+
+            <tr>
+                    <th>이메일 <span class='ref'>*</span></th>
+                    <td>
+                        <input type='email' name='email' id='email'>
+                    </td>
+            </tr>
+
+            <tr>
+                    <th>전화번호 <span class='ref'>*</span></th>
+                    <td>
+                        <input type='text' name='tel1' id='tel1'class='phone'>-
+                        <input type='text' name='tel2' id='tel2' class='phone'>-
+                        <input type='text' name='tel3' id='tel13' class='phone'>
+                    </td>
+            </tr>
+
+            <tr>
+                    <th>직업</th>
+                    <td>
+                        <select name='job' id='job'>
+                            <option value='공무원'>공무원</option>
+                            <option value='개발자'>개발자</option>
+                            <option value='무직'>무직</option>
+                        </select>
+                    </td>
+            </tr>
+            <tr>
+                    <th>취미</th>
+                    <td>
+                        <input type='checkbox' name='hobby' id='hobby1' value='reading'>
+                        <label for='hobby1'>독서</label>
+                        <input type='checkbox' name='hobby' id='hobby2' value='development'>
+                        <label for='hobby2'>개발</label>
+                        <input type='checkbox' name='hobby' id='hobby3' value='exercise'>
+                        <label for='hobby3'>운동</label>
+                        <input type='checkbox' name='hobby' id='hobby4' value='game'>
+                        <label for='hobby4'>게임</label>
+                        <input type='checkbox' name='hobby' id='hobby5' value='movie'>
+                        <label for='hobby5'>영화</label>
+                    </td>
+            </tr>
+            <tr>
+                <td colspan=2>
+                    <input type="submit" value='제출'>
+                    <input type="reset" value='취소'>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+       function validate()
+       {
+           var id=document.getElementById('userid');
+           var pw=document.getElementById('pw');
+           var pw1=document.getElementById('pw1');
+           var name=document.getElementById('username');
+           var email=document.getElementById('email');
+           var tel1=document.getElementById('tel1');
+           var tel2=document.getElementById('tel2');
+           var tel3=document.getElementById('tel3');
+           var ssn1=document.getElementById('ssn1');
+           var ssn2=document.getElementById('ssn2');
+
+           //아이디 검사
+           //첫글자가 반드시 영문자 소문자 4~12자로 이루어지고
+           //숫자가 하나 이상이 반드시 포함되어야 한다. 영문소문자와
+           //숫자로만 이루어져야한다.
+           if(!chk(/^[a-z][a-z\d]{3,11}$/,id,'첫글자는 영문 소문자, 하나 이상의 숫자를 포함한 4~12자의 조합'))
+               return false;
+           if(!chk(/[0-9]/,id,'숫자하나 포함'))
+               return false;
+
+
+
+
+
+       }
+
+
+
+
+   </script>
+
+</body>
+</html>
