@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>descendants</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <style>
+    .wrap * {
+      border: 1px solid lightgray;
+      display: block;
+      padding: 5px;
+      margin: 15px;
+      color: gray;
+    }
+
+    .type {
+      width: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='wrap'>
+    <div class='type'>div(great-grandparent)
+      <ul>ul(grandparent)
+        <li>li(directparent)
+          <span>span</span>
+        </li>
+        <li>li(directparent)
+          <span>span</span>
+        </li>
+      </ul>
+    </div>
+    <div class='type'>div(great-grandparent)
+      <p>p(directparent)
+        <span>span</span>
+      </p>
+    </div>
+  </div>
+  <p>
+    descendants는 하위의 요소들 중 direct하위요소만 선택 즉 child객체를 선택하는 것 children, find
+  </p>
+  <script>
+    $(function() {
+
+      var style = {
+        "color": "red",
+        "border": "2px solid red"
+      };
+      //children()
+      //$('.wrap').children().css(style);
+      //$('.type').children().css(style);
+      //  $('.wrap').children().children().children().css(style);
+      //==$('.type'), ==$('ul').
+    //  $('wrap').children().children().children()  });
+    //$('.wrap').find("span").css({'color':"yellow","border":"2px solid yellow"});
+              //$('.wrap').children('p:first').css
+              //$('.wrap').children('p').first().css
+  });
+  </script>
+</body>
+
+</html>

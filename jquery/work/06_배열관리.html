@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>배열관리</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  <h1>each매소드</h1>
+  <p>
+    형식 : $.each(배열명(객체),function(index,item)) idex : 배열의 인덱스 / item : 값(객체면 .통해 재접근)
+  </p>
+  <div id='area'></div>
+  <div id='area1'></div>
+  <div id='ta'></div>
+  <button onclick='tab()'></button>
+  <script>
+    $(function() {
+      //기본 배열
+      var basic = ["유병승", "19", "경기도시흥"];
+      $.each(basic, function(index, item) {
+        var temp = $('#area').html();
+        //$('#area').html(temp+item);
+        $('#area').html(item);
+      });
+      //객체배열
+      var obj = [{
+          name: '네이버',
+          link: "http://www.naver.com"
+        },
+        {
+          name: "구글",
+          link: "http://www.google.com"
+        },
+        {
+          name: "다음",
+          link: "http://www.daum.net"
+        }
+      ];
+      var output = "";
+      $.each(obj, function(index, item) {
+        output += "<h2><a href=" + item.link + ">" + item.name + "</a></h2>";
+      });
+      $('#area1').html(output);
+    });
+
+    function tab() {
+      function Student(name1, grade1, ban1, kor1, eng1, math1) {
+        this.name = name1;
+        this.grade = grade1;
+        this.ban = ban1;
+        this.kor = kor1;
+        this.eng = eng1;
+        this.math = math1;
+      }
+      var stus = [
+        new Student("유병승", 3, 2, 100, 100, 100),
+        new Student("홍길동", 3, 1, 90, 75, 89),
+        new Student("임꺽정", 3, 2, 80, 75, 89),
+        new Student("장길산", 3, 1, 90, 80, 90),
+      ];
+      //stus[stus.length-1]=
+      var output = "";
+      $.each(stus, function(index, item) {
+        if (index == 0) {
+          output += "<table border=1 cellspacing=0>";
+          output += "<tr><th>이름</th>";
+          output += "<th>학년</th>";
+          output += "<th>반</th>";
+          output += "<th>국어</th>";
+          output += "<th>영어</th>";
+          output += "<th>수학</th>";
+          output += "<th>총점</th>";
+          output += "<th>평균</th>";
+        } else {
+          output += "<tr><td>" + item.name + "</td>";
+          output += "<td>" + item.grade + "</td>";
+          output += "<td>" + item.ban + "</td>";
+          output += "<td>" + item.kor + "</td>";
+          output += "<td>" + item.eng + "</td>";
+          output += "<td>" + item.math + "</td>";
+          output += "<td>" + (item.kor + item.eng + item.math) + "</td>";
+          output += "<td>" + Math.floor((item.kor + item.eng + item.math) / 3) + "</td>";
+          output += "</tr>";
+        }
+      });
+      output += "</table>";
+      $('#ta').html(output);
+    }
+  </script>
+</body>
+
+</html>

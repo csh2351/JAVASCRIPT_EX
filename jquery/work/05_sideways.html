@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sideways</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <h1>siblings</h1>
+    <p>
+        같은 노드(형제)에 위치한 요소를 선택하는 것
+        siblings(요소) 매개변수와 일치하는 형제 요소를 선택
+    </p>
+    <div class='wrap'>
+        <p>p야</p>
+        <span>span이야</span>
+        <p>p1이야</p>
+        <h2>h2야</h2>
+        <h3>h3야</h3>
+    </div>
+    <script>
+    //siblings
+    //$('h2').siblings().css({'color':'blue',"border":"2px solid blue"});
+    //$('h2').siblings('p').css({'color':'blue',"border":"2px solid blue"});
+    //next() 선택자를 기준으로 다음에 나오는 요소 선택
+    //$('span').next().css({'color':'skyblue',"border":"2px solid skyblue"});
+    //nextAll() 선택자를 기준으로 다음에 나오는 모든 형제요소 선택
+    //$('span').nextAll().css({'color':'skyblue',"border":"2px solid skyblue"});
+    //nextUntil(인자) 선택자 기준 인자까지 범위
+    //$('span').nextUntil('h3').css({'color':'skyblue',"border":"2px solid skyblue"});
+    //prev()는 선택자를 기준으로 앞에 나온 형제 요소를 선택
+       //$('h2').prev().css({'color':'yellow',"border":"2px solid yellow"});
+      // $('h2').prevAll().css({'color':'yellow',"border":"2px solid yellow"});
+// console.log($('h2').siblings().is('p'));
+if($('h2').siblings().is('p'))
+       {
+           $('h2').siblings('p').css({'color':'green',"border":"2px solid yellow"});
+       }
+
+
+
+    </script>
+</body>
+</html>

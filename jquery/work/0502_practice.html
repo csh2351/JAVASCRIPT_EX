@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>0502Practice</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  </head>
+  <body>
+    <h1>배열관리</h1>
+
+<p>학생 배열을 만들고 이름 학년 반 국어 영어 수학 1명(임의)
+
+  div id='stu'에 출력</p>
+  <div id="stu">
+
+  </div>
+  <div id="stu1">
+
+  </div>
+<button type="button" name="button" onclick='tab()'>테이블만들기</button>
+<script type="text/javascript">
+  //var student = [name:'승훈','나이':28,class:'R','과목':'Java'];
+
+$(function(){
+  var student=['승훈','28','R','Java'];
+
+  $.each(student,function(index,item){
+      var temp=$('#stu').html();
+      $('#stu').html(temp+item);
+  });
+  var stu1=[{name:'이름',grade:'학년',class:'반'},{name:'최승훈',grade:1,class:'R'},{name:'장민오',grade:1,class:'R'},{name:'김재홍',grade:1,class:'R'},{name:'안지훈',grade:1,class:'R'}];
+var output1 ="";
+ $.each(stu1,function(index,item){
+
+    output1 += "<p>" + item.name + item.grade + item.class +"</p>";
+ });
+  $('#stu1').html(output1);
+
+});
+function tab()
+       {
+           function Student(name1,grade1,ban1,kor1,eng1,math1)
+           {
+               this.name=name1;
+               this.grade=grade1;
+               this.ban=ban1;
+               this.kor=kor1;
+               this.eng=eng1;
+               this.math=math1;
+           };
+           var stus=[
+                       new Student("유병승",3,2,100,100,100),
+                       new Student("홍길동",3,1,90,75,89),
+                       new Student("임꺽정",3,2,80,75,89),
+                       new Student("장길산",3,1,90,80,90),
+                   ];
+           var output="";
+           $.each(stus,function(index,item){
+               if(index==0)
+               {
+                   output+="<table border=1 cellspacing=0>";
+                   output+="<tr><th>이름</th>";
+                   output+="<th>학년</th>";
+                   output+="<th>반</th>";
+                   output+="<th>국어</th>";
+                   output+="<th>영어</th>";
+                   output+="<th>수학</th>";
+                   output+="<th>총점</th>";
+                   output+="<th>평균</th>";
+               }
+               else
+               {
+                   output+="<tr><td>"+item.name+"</td>";
+                   output+="<td>"+item.grade+"</td>";
+                   output+="<td>"+item.ban+"</td>";
+                   output+="<td>"+item.kor+"</td>";
+                   output+="<td>"+item.eng+"</td>";
+                   output+="<td>"+item.math+"</td>";
+                   output+="<td>"+(item.kor+item.eng+item.math)+"</td>";
+                   output+="<td>"+Math.floor((item.kor+item.eng+item.math)/3)+"</td>";
+                   output+="</tr>";
+               }
+           });
+           output+="</table>";
+           $('#ta').html(output);
+       }
+
+</script>
+
+
+
+  </body>
+</html>
