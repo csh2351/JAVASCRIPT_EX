@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ancestors</title>
+    <script src='http://code.jquery.com/jquery-latest.min.js'></script>
+    <style>
+        .wrap *
+        {
+            border:1px solid lightgray;
+            display:block;
+            padding:5px;
+            margin:15px;
+            color:gray;
+        }
+        
+        .type{
+            width:500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>상위요소검색</h1>
+    <div class="wrap">
+        <div class='type'>div(great-grandparent)
+            <ul>ul(grandparent)
+                <li>li(directparent)
+                    <span>span</span>
+                </li>
+            </ul>
+        </div>
+        <div class='type'>div(grandparent)
+            <p>p(directparent)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+    <script>
+        //$("span").parent().css({'color':'red','border':'2px solid red'});
+        //$("span").parents().css({'color':'green','border':'2px solid green'});
+        //$("span").parents('ul').css({'color':'pink','border':'2px solid pink'});
+        $("span").parentsUntil("div").css('background','pink');
+    
+    </script>
+</body>
+</html>

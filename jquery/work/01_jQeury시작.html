@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQeury시작</title>
+    <!-- CDN방식으로 jQuery 불러오기-->
+    <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
+    <!--다운로드 방식이용!-->
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         $('#second').css('background','blue');
+         $('#second').css('width','100px');
+         $('#second').css('height','100px');  
+        });
+
+        $(function(){
+         $('#third').css('background','green');
+         $('#third').css('width','100px');
+         $('#third').css('height','100px'); 
+        });
+        jQuery(function(){
+          jQuery('#forth').css('background','yellow');
+          jQuery('#forth').css('width','100px');
+          jQuery('#forth').css('height','100px'); 
+        });
+
+    </script>
+
+</head>
+<body>
+    <div id='first'></div>
+    <script>
+            $('#first').css('background','red');
+            $('#first').css('width','100px');
+            $('#first').css('height','100px');   
+    </script>
+    <div id='second'></div>
+    <div id='third'></div>
+    <div id='forth'></div>
+
+    <h1>태그선택자</h1>
+    <p>특정한 태그요소를 선택하는 것</p>
+    <!-- 태그명을 적어주면됨-->
+    <h2>나 h2-1</h2>
+    <h2>나 h2-2</h2>
+    <p>난 p태그야 </p>
+    <span>난 span이야</span>
+    <h2>난 h2-3</h2>
+    <h3>난 h3야</h3>
+    <script>
+        $('h2').css('color','green');
+        $('h3,span,h1').css('color','blue');
+    </script>
+
+    <h1>자손 후손선택자</h1>
+    <div>
+        <ul>
+            <li>test1</li>
+            <li>test2</li>
+            <li>test3</li>
+            <li>test3</li>
+            <li>test4</li>
+            <li>test5</li>
+            <li>test6</li>
+        </ul>
+        <p>p</p>
+        <span>span</span>
+    </div>
+    <script>
+        //$('div').css('border','1px solid black');
+        //$('div p').css('background','red');
+        //$('div>p').css('font-size','50px');
+        //$('ul li:lt(4)').css('background','green');
+        $('li:odd').css('background','pink');
+
+    </script>
+
+    <h1>input태그 선택자</h1>
+    <label>택스트 상자</label><input type='text'>
+    <label>비밀번호 상자</label><input type='password'>
+    <label>체크박스</label><input type='checkbox'>
+    <label>라디오박스</label><input type='radio'>
+    <br>
+
+    <script>
+        $(':text').css('background','red');
+        $(':password').css('color','blue');
+        $(':checkbox').css({"height":"300px","width":"300px"});
+        $(':radio').css({"height":"300px","width":"300px",'background':'skyblue'});
+    </script>
+
+    <h1>속성선택자</h1>
+    <ul id='a'>
+        <li>test1</li>
+        <li>test2</li>
+        <li>test3</li>
+        <li>test4</li>
+        <li>test5</li>
+    </ul>
+    <ul id='b'>
+        <li>test2-1</li>
+        <li>test2-2</li>
+        <li>test2-3</li>
+        <li>test2-4</li>
+        <li>test2-5</li>
+    </ul>
+    <a href="http://www.iei.or.kr" class='academy'>이동!</a>
+    <a href="asdafasdf.jpg" class='academy'>이동2!</a>
+    <a href="test-.gif" class='academy'>이동3!</a>
+    <a href="rrrr" class='academy'>이동4!</a>
+    <a href="testssstest" class='academy'>이동5!</a>
+
+    <script>
+       // $('[id]').css('background','skyblue');
+       $('[id=a]').css('background','skyblue');
+       $('[href]').css({'text-decoration':'none','font-size':'30px'});
+       $('[href$=jpg]').css({'text-decoration':'none','font-size':'60px'});
+       $('[href^=rrr]').css({'text-decoration':'none','font-size':'60px'});
+       $('[href|=test]').css({'color':'hotpink','font-size':'60px'});
+    </script>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>필터 객체 탐색</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <h1>필터링 메소드</h1>
+    <h3>filter 메소드 사용</h3>
+    <p>필터메소드를 사용해 문서객체를 선택가능</p>
+    <p>asdfsadf</p>
+    <h4 class='test'>test-0</h4>
+    <p>adsf</p>
+    <h4 class='test'>test-1</h4>
+    <h4 class='test'>test-2</h4>
+    <p>ddfsf</p>
+    <h4 class='test'>test-3</h4>
+    <h4 class='test'>test-4</h4>
+    <p>asdfasdeee</p>
+    <h4>test-5</h4>
+    <h4 class='test'>test-6</h4>
+    <p>asdfsadf</p>
+    <script>
+        $(function(){
+            //$('h4').filter(':even').css({"background":"tomato","color":"white"});
+            //$('h4:even').css({"background":"tomato","color":"white"});
+            // $('h4').filter(function(index){
+            //     return index%2==1;
+            // }).css({"background":"green","color":"white"});
+            $('p').first().css('font-size','30px');
+            $('p').last().css('font-size','30px');
+            $('p').eq(3).css('font-size','30px');
+            $('h4').not('.test').css({"background":"skyblue","color":"white"})
+        });
+    
+    </script>
+
+
+
+</body>
+</html>
