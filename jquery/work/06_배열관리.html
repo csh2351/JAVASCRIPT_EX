@@ -92,6 +92,61 @@
       $('#ta').html(output);
     }
   </script>
+  <h1>선택자 선택 후 each사용하기</h1>
+        <p>
+            방식 : $(선택자).each(function(index,item){});
+        </p>
+        <div id='cho'>
+            <h1>item-1</h1>
+            <h1>item-2</h1>
+            <h1>item-3</h1>
+            <h1>item-4</h1>
+            <h1>item-5</h1>
+        </div>
+        <br>
+        <button onclick="change1()">변경!</button>
+
+        <script>
+            function change1(){
+                //$('#cho').children().each(function(index,item){
+                $('#cho h1').each(function(index,item){
+                    $(this).addClass("a"+(index+1));
+                });
+            };
+        </script>
+        <h1>extend매소드</h1>
+        <p>
+            객체를 합칠때 사용
+        </p>
+        <script>
+            $(function(){
+                var obj={name:"유병승",age:19};
+                console.log(obj);
+                $.extend(obj,{job:"강사"});
+                //obj.job='강사';
+                console.log(obj);
+                var obj2={name:"백종훈", hobby:["게임","공부"]};
+                $.extend(obj,obj2);
+                console.log(obj);
+                console.log(obj2);
+            });
+        </script>
+        <h1>충돌방지</h1>
+        <p>
+            jQuery에서 $문자는 편하게 쓰기 위한 하나의 변수
+            같은 것으로 다른 자바스크립트 플러그인에서도 쓸수있음
+            동일하게 $을 사용하고 있다면 두개의 동작이 충돌할수있어
+            이를 변경해 주는 매소드
+        </p>
+    <script>
+        //var jq=$.noConflict();
+        //$ ==> jq!! 변경.
+        // jq(function(){
+        //     alert('변경됨!');
+        // });
+    </script>
+
+
 </body>
 
 </html>

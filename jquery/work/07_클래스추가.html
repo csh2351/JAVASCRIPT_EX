@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>클래스추가</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <style>
+    .extra {
+      background-color: black;
+      color: white;
+      width: 100px;
+      height: 100px;
+    }
+
+    .a0 {
+      color: aqua;
+    }
+
+    .a1 {
+      color: pink;
+    }
+
+    .a2 {
+      color: purple;
+    }
+
+    .a3 {
+      color: greenyellow;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>클래스 추가</h1>
+  <div id='add'></div>
+  <p>test0</p>
+  <p>test1</p>
+  <p>test2</p>
+  <p>test3</p>
+  <div id='add2'>abc</div>
+  <span>span0</span>
+  <span>span1</span>
+  <span>span2</span>
+  <span>span3</span>
+  <br><br>
+  <button onclick='test()'>추가</button>
+  <button onclick='removecl()'>삭제</button>
+  <button onclick='test2()'>함수로 추가</button>
+  <button onclick='revmovecl2()'>함수로 삭제</button>
+  <button onclick='tocl()'>toggle변경</button>
+  <button onclick='toclf()'>toggle function 변경</button>
+  <script>
+    //$('p').on('mouseenter',test2);
+    //$('p').on('mouseleave',revmovecl2);
+    var flag = true;
+
+    function test() {
+      if (flag) {
+        $('#add').addClass('extra');
+        flag = false;
+      } else {
+        $('#add').removeClass('extra');
+        flag = true;
+      }
+    }
+
+    function removecl() {
+
+    }
+
+    function test2() {
+      $('p').addClass(function(n) {
+        return "a" + n;
+      });
+    }
+
+    function revmovecl2() {
+      $('p').removeClass(function(n) {
+        return "a" + n
+      });
+    }
+
+    function tocl() {
+      $('#add2').toggleClass('extra');
+    }
+
+    function toclf() {
+      $('span').toggleClass(function(n) {
+        return 'a' + n;
+        //a0 ~ a3;
+      });
+    }
+    $(function() {
+      setInterval(function() {
+        toclf();
+        tocl();
+      }, 1000)
+    });
+  </script>
+
+
+</body>
+
+</html>

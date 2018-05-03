@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>텍스트</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <p>test1</p>
+    <p>test2</p>
+    <p>test3</p>
+    <p>test4</p>
+    <button onclick="test()">문구출력하기</button>
+    <button onclick="test1()">기본문구변경하기</button>
+    <button onclick="test3()">함수로 변경하기</button>
+    <button onclick="test4()">text() 변경하기</button>
+    <script>
+        function test()
+        {
+            console.log($('p:first').html());
+        }
+        function test1()
+        {
+            $('p').html("<h1>변경되었네요</h1>");
+        }
+        function test3()
+        {
+            $('p').html(function(index,value){
+                switch(index)
+                {
+                    case 0 : return value+"첫번째";
+                    case 1 : return value+"두번째";
+                    case 2 : return value+"세번째";
+                    default : return value+"디폴트";
+                }
+
+            });
+        }
+        function test4()
+        {
+            $('p').text("<h1>변경되었네요</h1>");
+        }
+    </script>
+
+
+
+</body>
+</html>
