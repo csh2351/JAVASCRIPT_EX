@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이벤트처리</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <h1>on()매소드 off()매소드</h1>
+    <div id='test2'>기본상태</div>
+    <script>
+        $(function(){
+            // $('#test2').on('click',function(){
+            //     alert("하하 클릭이벤트!");
+            // });
+            $('#test2').on(
+                {
+                    'mouseenter':function()
+                    {
+                        $(this).css(
+                            {'background-color':'yellowgreen'})
+                            .html("마우스올림");
+                    }
+                    ,'mouseleave':function()
+                    {
+                        $(this).css('background-color','yellow')
+                        .html('마우스나감');
+                    }
+                    ,'click':function()
+                    {
+                        $(this).off('mouseenter')
+                                .off('mouseleave')
+                                .off('click')
+                                .css('background-color','orange')
+                                .html('기본값');
+                    }
+                }
+            );
+        });
+
+    </script>
+    <h3>one()</h3>
+    <p>이벤트를 한번만 발생시키는 매소드</p>
+    <h1 id='test4'>여기 클릭!
+    </h1>
+    <script>
+        $(function(){
+
+            $('#test4').one('click',function(){
+                alert("한번만 실행!!");
+            });
+
+        });
+
+    </script>
+    <h1>회원가입</h1>
+     <form>
+         <table align='center'>
+             <tr>
+                 <td><label>이름</label></td>
+                 <td><input type='text' name='name' id='name' required> </td>
+                 <td><label id='nameresult'></label></td>
+             </tr>
+             <tr>
+                 <td><label>아이디</label></td>
+                 <td><input type='text' name='userid' id='userid' required> </td>
+                 <td><input type='button' value='중복확인'></td>
+             </tr>
+             <tr>
+                 <td><label>비밀번호</label></td>
+                 <td><input type='password' name='pwd1' id='pwd1' required> </td>
+             </tr>
+             <tr>
+                 <td><label>비밀번호확인</label></td>
+                 <td><input type='password' name='pwd2' id='pwd2' required> </td>
+                 <td><label id='pwdresult'></label></td>
+             </tr>
+             <tr>
+                 <td><label>이메일</label></td>
+                 <td><input type='email' name='email' id='email' required> </td>
+                 <td></td>
+             </tr>
+             <tr>
+                 <td></td>
+                 <td><input type='reset'>&nbsp;&nbsp;&nbsp;<input type='submit'></td>
+                 <td></td>
+             </tr>
+         </table>
+     </form>
+     <script>
+         $(function(){
+             $('#name').change(function(){
+                 var regExp=/^[가-힣]{2,}/;
+                 if(!regExp.test($(this),val()))
+                 {
+                     $('#nameresult').html("한글로 입력하세요").css("color","red");
+                     $(this).focus().css("background-color","red");
+
+                 }
+                 else
+                 {
+                     $('#nameresult').html("정상입력").css("color","green");
+                     $(this).focus().css("background",'initial');
+                 }
+             });
+             $("#pwd2").keyup(function(){
+                 if($('#pwd1').val()!=$(this).val()){
+                     $('#pwdresult').html("비밀번호 불일치").css('color','red');
+
+                 }
+                 else{
+                     $('#pwdresult').html('비밀번호 일치').css('color','green');
+                 }
+             });
+             $('form').submit(function(event){
+                            //기본이벤트제거
+                            if(confirm("홈을 전송하시겠습니까?"))
+                            {
+                                event.preventDefault();
+                                return;
+                            }
+                            $('#result').html('이름 : '+$('#name').val());
+                            event.preventDefault();
+                        });
+
+         });
+
+     </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>effect효과</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+    <h1>보여주고 숨기기</h1>
+    <button id='show'>보여주기</button>
+    <button id='hidden'>숨기기</button>
+    <img id='item1' src='http://pds.joins.com/news/component/htmlphoto_mmdata/201502/16/htm_20150216175457142.jpg'>
+    <hr>
+    <script>
+        $(function(){
+            $('#show').click(function(){
+                $('#item1').show(5000);
+            });
+            $('#hidden').click(function(){
+                $('#item1').hide(5000);
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <style>
+    .item {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      margin: 5px 5px 0px 0px;
+      text-align: center;
+      line-height: 100px;
+      background-color: yellowgreen;
+    }
+
+    .item span {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .lime {
+      background-color: lime;
+    }
+
+    .added {
+      color: palegreen;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      padding: 5px 10px 15px 10px;
+      margin: 10px;
+    }
+
+    #remove1 {
+      border: 2px solid red;
+    }
+
+    #result {
+      border: 2px dashed blue;
+    }
+
+    img {
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>객체생성 및 제거</h1>
+  <h3>객체 생성</h3>
+  <div id='area1'></div>
+  <script>
+    $(function() {
+      var txt1 = "<p>Text1</p>";
+      var txt2 = $("<p></p>").html("안녕");
+      var node1 = document.createElement('p');
+      var textno = document.createTextNode("javaScript방식");
+      node1.appendChild(textno);
+      //document.getElementById('area1').appendChild(node1);
+      //<p>javaScript방식</p>
+      $('#area1').append(node1, txt1, txt2);
+    });
+  </script>
+  <h1>객체삽입 메소드</h1>
+  <p>
+    <!--선택자의 자식노드로 엘리먼트를 추가하는 매소드-->
+    <!--페이지내에 엘리멘트가 있으면 이동-->
+    $(선택자).append(엘리먼트(선택자))
+  </p>
+  <h1 id='test5'><span>A</span></h1>
+  <h1 id='test6'><span>B</span></h1>
+  <h1 id='test7'><span>C</span></h1>
+  <hr>
+  <h1 id='test8'><span>D</span></h1>
+  <hr>
+  <img src="http://www.isawesome.co.kr/img_up/shop_pds/rp515/2017/11503986198.jpg" alt="">
+  <img src="http://image.sportsseoul.com/2017/12/07/news/20171207013514_2.jpg" alt="">
+
+  <button type="button" name="button" onclick='imageChange()'>수지로 바꾼당</button>
+  <script>
+    $(function() {
+      //    $('#test5').append("<span class='add'>add</span>");
+      //    $('#test6').prepend("<span class='add'>add</span>");
+      //  $('#test7').after("<span class='add'>add</span>");
+      //  $('#test8').before("<span class='add'>add</span>");
+      var num = 0;
+      var intertval = setInterval(function() {
+        $('#test5').append("<span class='add'>#</span>");
+        $('#test6').prepend("<span class='add'>*^.~*</span>");
+        num++;
+        if (num > 5) clearInterval(intertval);
+
+      }, 1000);
+    });
+
+    function imageChange() {
+      $('img').attr('src', 'http://img1.daumcdn.net/thumb/R1024x0/?fname=http://i1.daumcdn.net/cfile280/image/996D4933598876C9169548')
+    }
+  </script>
+  <div id='s'>
+    <img id='img1' src='http://blog.jinbo.net/attach/615/200937431.jpg'>
+    <img id='img2' src='https://file.okky.kr/images/1513127807083.jpg'>
+    <img id='img3' src='http://cfile4.uf.tistory.com/image/176DA92E4C670F6B65E52F'>
+  </div>
+  <button onclick='changeImg()'>이미지 전환</button>
+  <script>
+    function changeImg() {
+      setInterval(function() {
+        //$('#s').append($('img').first());
+        $('img:eq(2)').after($('img:eq(0)'));
+      }, 1000)
+    }
+  </script>
+  <h1>객체의 복사와 제거</h1>
+  <p>
+    복사 clone()매소드 : 매개변수로 true/false true : 이벤트까지 복사함 false: 이벤트를 복사안함.
+  </p>
+  <div id='clones'>
+    <div id='item1' class='item'>
+      <span>안녕</span>
+    </div>
+  </div>
+  <button onclick='clone1()'>clone</button>
+  <script>
+    $(function() {
+      $('#item1').hover(
+        function() {
+          $(this).addClass('lime');
+        },
+        function() {
+          $(this).removeClass('lime');
+        }
+      );
+    });
+
+    function clone1() {
+      var copy = $('#item1').clone(false);
+      //$('#clones').append($('#item1').clone(true));
+      $('#clones').append(copy);
+    }
+  </script>
+  <h1>appendTo</h1>
+  <p>
+    $(선택자A).appendTo($(선택자B))
+  </p>
+  <h1 id='test1'><span>A</span></h1>
+  <h1 id='test2'><span>A</span></h1>
+  <h1 id='test3'><span>A</span></h1>
+  <h1 id='test4'><span>A</span></h1>
+  <hr>
+  <h1 id='test5'><span>A</span></h1>
+  <script>
+    $(function() {
+      $("<span>B</span>").appendTo($('#test1'));
+      $("<span>B</span>").insertAfter($('#test2'));
+    });
+  </script>
+  <h1>객체(요소)제거</h1>
+    <p>
+        empty() : 모든자식요소를 제거;
+        remove() : DOM요소를 잘라내기, 연관된 이벤트삭제
+        detach() : DOM요소를 잘라내기, 연관된 이벤트유지
+    </p>
+    <button id='empty'>empty</button>
+    <button id='remove'>remove</button>
+    <button id='detach'>detach</button>
+    <div id='remove1' class='box'>
+        <div id='item2' class='item'>
+            <span>안녕</span>
+        </div>
+    </div>
+    <div id='result' class='box'></div>
+    <script>
+        $(function(){
+            $('#item2').hover(
+                function()
+                {
+                    $(this).addClass("lime");
+                },
+                function()
+                {
+                    $(this).removeClass("lime");
+                }
+            );
+            //empty 테스트
+            $('#empty').click(function(){
+                $('#remove1').empty();
+            });
+            //remove테스트
+            $('#remove').click(function(){
+                var temp=$('#remove1').remove();
+                $('#result').html(temp);
+            });
+            //detach테스트
+            $('#detach').click(function(){
+                var temp=$('#remove1').detach();
+                $('#result').html(temp);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
