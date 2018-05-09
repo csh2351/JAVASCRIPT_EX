@@ -1,0 +1,180 @@
+﻿-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- member Table Create SQL
+CREATE TABLE member
+(
+    `member_pk`               INT            NOT NULL    AUTO_INCREMENT COMMENT 'member_pk', 
+    `member_id`               VARCHAR(45)    NULL        COMMENT 'member_id', 
+    `member_pw`               VARCHAR(45)    NULL        COMMENT 'member_pw', 
+    `member_name`             VARCHAR(45)    NULL        COMMENT 'member_name', 
+    `member_phone`            INT            NULL        COMMENT 'member_phone', 
+    `member_email`            VARCHAR(45)    NULL        COMMENT 'member_email', 
+    `member_request_title`    VARCHAR(45)    NULL        COMMENT 'member_request_title', 
+    `member_request_content`  VARCHAR(45)    NULL        COMMENT 'member_request_content', 
+    `member_request_date`     DATETIME       NULL        COMMENT 'member_request_date', 
+    PRIMARY KEY (member_pk)
+);
+
+ALTER TABLE member COMMENT 'member';
+
+
+-- truck Table Create SQL
+CREATE TABLE truck
+(
+    `truck_pk`                    INT            NOT NULL    AUTO_INCREMENT COMMENT 'truck_pk', 
+    `truck_name`                  VARCHAR(45)    NULL        COMMENT 'truck_name', 
+    `truck_price`                 INT            NULL        COMMENT 'truck_price', 
+    `truck_menu`                  VARCHAR(45)    NULL        COMMENT 'truck_menu', 
+    `truck_image`                 VARCHAR(45)    NULL        COMMENT 'truck_image', 
+    `truck_location`              VARCHAR(45)    NULL        COMMENT 'truck_location', 
+    `truck_info_name`             VARCHAR(45)    NULL        COMMENT 'truck_info_name', 
+    `truck_info_register_number`  INT            NULL        COMMENT 'truck_info_register_number', 
+    `truck_content`               VARCHAR(45)    NULL        COMMENT 'truck_content', 
+    `truck_status`                BIT            NULL        COMMENT 'truck_status', 
+    `truck_open_time`             DATETIME       NULL        COMMENT 'truck_open_time', 
+    `truck_close_time`            DATETIME       NULL        COMMENT 'truck_close_time', 
+    `truck_route`                 VARCHAR(45)    NULL        COMMENT 'truck_route', 
+    `truck_approve`               BIT            NULL        COMMENT 'truck_approve', 
+    `member_pk`                   CHAR(6)        NULL        COMMENT 'member_pk', 
+    PRIMARY KEY (truck_pk)
+);
+
+ALTER TABLE truck COMMENT 'truck';
+
+ALTER TABLE truck ADD CONSTRAINT FK_truck_member_pk_member_member_pk FOREIGN KEY (member_pk)
+ REFERENCES member (member_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- coupon Table Create SQL
+CREATE TABLE coupon
+(
+    `coupon_pk`       INT            NOT NULL    AUTO_INCREMENT COMMENT 'coupon_pk', 
+    `coupon_name`     VARCHAR(45)    NULL        COMMENT 'coupon_name', 
+    `coupon_duedate`  VARCHAR(45)    NULL        COMMENT 'coupon_duedate', 
+    `coupon_content`  VARCHAR(45)    NULL        COMMENT 'coupon_content', 
+    `coupon_caution`  VARCHAR(45)    NULL        COMMENT 'coupon_caution', 
+    `truck_pk`        CHAR(6)        NULL        COMMENT 'truck_pk', 
+    PRIMARY KEY (coupon_pk)
+);
+
+ALTER TABLE coupon COMMENT 'coupon';
+
+ALTER TABLE coupon ADD CONSTRAINT FK_coupon_truck_pk_truck_truck_pk FOREIGN KEY (truck_pk)
+ REFERENCES truck (truck_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- qna Table Create SQL
+CREATE TABLE qna
+(
+    `qna_pk`              INT            NOT NULL    AUTO_INCREMENT COMMENT 'qna_pk', 
+    `qna_title`           VARCHAR(45)    NULL        COMMENT 'qna_title', 
+    `qna_answer_title`    VARCHAR(45)    NULL        COMMENT 'qna_answer_title', 
+    `qna_answer_content`  VARCHAR(45)    NULL        COMMENT 'qna_answer_content', 
+    `qna_content`         LONGTEXT       NULL        COMMENT 'qna_content', 
+    PRIMARY KEY (qna_pk)
+);
+
+ALTER TABLE qna COMMENT 'qna';
+
+
+-- event Table Create SQL
+CREATE TABLE event
+(
+    `event_pk`       INT            NOT NULL    AUTO_INCREMENT COMMENT 'event_pk', 
+    `event_title`    VARCHAR(45)    NULL        COMMENT 'event_title', 
+    `event_img`      VARCHAR(45)    NULL        COMMENT 'event_img', 
+    `event_date`     DATETIME       NULL        COMMENT 'event_date', 
+    `event_content`  LONGTEXT       NULL        COMMENT 'event_content', 
+    `truck_pk`       CHAR(6)        NULL        COMMENT 'truck_pk', 
+    PRIMARY KEY (event_pk)
+);
+
+ALTER TABLE event COMMENT 'event';
+
+ALTER TABLE event ADD CONSTRAINT FK_event_truck_pk_truck_truck_pk FOREIGN KEY (truck_pk)
+ REFERENCES truck (truck_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- faq Table Create SQL
+CREATE TABLE faq
+(
+    `faq_pk`       INT            NOT NULL    AUTO_INCREMENT COMMENT 'faq_pk', 
+    `faq_title`    VARCHAR(45)    NULL        COMMENT 'faq_title', 
+    `faq_date`     DATETIME       NULL        COMMENT 'faq_date', 
+    `faq_content`  LONGTEXT       NULL        COMMENT 'faq_content', 
+    PRIMARY KEY (faq_pk)
+);
+
+ALTER TABLE faq COMMENT 'faq';
+
+
+-- notice Table Create SQL
+CREATE TABLE notice
+(
+    `notice_pk`       INT            NOT NULL    AUTO_INCREMENT COMMENT 'notice_pk', 
+    `notice_title`    VARCHAR(45)    NULL        COMMENT 'notice_title', 
+    `notice_date`     DATETIME       NULL        COMMENT 'notice_date', 
+    `notice_content`  LONGTEXT       NULL        COMMENT 'notice_content', 
+    PRIMARY KEY (notice_pk)
+);
+
+ALTER TABLE notice COMMENT 'notice';
+
+
+-- review Table Create SQL
+CREATE TABLE review
+(
+    `review_pk`       INT            NOT NULL    AUTO_INCREMENT COMMENT 'review_pk', 
+    `review_name`     VARCHAR(45)    NULL        COMMENT 'review_name', 
+    `review_title`    VARCHAR(45)    NULL        COMMENT 'review_title', 
+    `review_date`     VARCHAR(45)    NULL        COMMENT 'review_date', 
+    `review_content`  VARCHAR(45)    NULL        COMMENT 'review_content', 
+    `review_comment`  VARCHAR(45)    NULL        COMMENT 'review_comment', 
+    `review_image`    VARCHAR(45)    NULL        COMMENT 'review_image', 
+    `review_star`     INT            NULL        COMMENT 'review_star', 
+    `member_pk`       CHAR(6)        NULL        COMMENT 'member_pk', 
+    `truck_pk`        CHAR(6)        NULL        COMMENT 'truck_pk', 
+    PRIMARY KEY (review_pk)
+);
+
+ALTER TABLE review COMMENT 'review';
+
+ALTER TABLE review ADD CONSTRAINT FK_review_member_pk_member_member_pk FOREIGN KEY (member_pk)
+ REFERENCES member (member_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE review ADD CONSTRAINT FK_review_truck_pk_truck_truck_pk FOREIGN KEY (truck_pk)
+ REFERENCES truck (truck_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- member_qna Table Create SQL
+CREATE TABLE member_qna
+(
+    `member_pk`  INT            NOT NULL    AUTO_INCREMENT COMMENT 'member_pk', 
+    `qna_pk`     VARCHAR(45)    NULL        COMMENT 'qna_pk'
+);
+
+ALTER TABLE member_qna COMMENT 'member_qna';
+
+ALTER TABLE member_qna ADD CONSTRAINT FK_member_qna_member_pk_member_member_pk FOREIGN KEY (member_pk)
+ REFERENCES member (member_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE member_qna ADD CONSTRAINT FK_member_qna_qna_pk_qna_qna_pk FOREIGN KEY (qna_pk)
+ REFERENCES qna (qna_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- member_coupon Table Create SQL
+CREATE TABLE member_coupon
+(
+    `member_pk`  INT            NOT NULL    AUTO_INCREMENT COMMENT 'member_pk', 
+    `coupon_pk`  VARCHAR(45)    NULL        COMMENT 'coupon_pk'
+);
+
+ALTER TABLE member_coupon COMMENT 'member_coupon';
+
+ALTER TABLE member_coupon ADD CONSTRAINT FK_member_coupon_coupon_pk_coupon_coupon_pk FOREIGN KEY (coupon_pk)
+ REFERENCES coupon (coupon_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE member_coupon ADD CONSTRAINT FK_member_coupon_member_pk_member_member_pk FOREIGN KEY (member_pk)
+ REFERENCES member (member_pk)  ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+

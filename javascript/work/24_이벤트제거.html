@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이벤트중단</title>
+    <style>
+        .div-test{
+            border:1px solid black;
+            padding:20px;
+        }
+        .div1
+        {
+            background: red;
+        }
+        .div2
+        {
+            background: orange;
+        }
+        .div3
+        {
+            background: yellow;
+        }
+        .div4
+        {
+            background: green;
+        }
+    </style>
+
+</head>
+<body>
+   <h1>기본이벤트 제거</h1>
+   <a href="http://www.naver.com" onclick='return stop(event)'>네이버 연결</a>
+   <a id='astop' href="http://www.google.com">구글 연결</a>
+   <script>
+       function stop(event)
+       {
+           event.preventDefault();
+           alert("권한이 없어 이동할 수 없습니다.");
+
+       }
+       document.getElementById('astop').addEventListener('click',function(event){
+           event.preventDefault();
+           alert("권한이 없어 이동할 수 없습니다.");
+       });
+   </script>
+    <h1>버블링 방식의 이벤트발생</h1>
+    <p>자식에서 발생한 이벤트가 부모에게 영향을 미치는 방식</p>
+    <div onclick="test1('1번 div')" class='div-test div1'>
+        <div onclick="test1('2번 div')"class='div-test div2'>
+            <div onclick="test1('3번 div')"class='div-test div3'>
+                <div onclick="test1('4번 div')"class='div-test div4'></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function test1(msg)
+        {
+            alert(msg);
+        };
+    </script>
+    <hr>
+    <h1>버블링 방식의 이벤트발생 차단</h1>
+    <div onclick="test2(event,'1번 div')" class='div-test div1'>
+        <div onclick="test2(event,'2번 div')"class='div-test div2'>
+            <div onclick="test2(event,'3번 div')"class='div-test div3'>
+                <div onclick="test2(event,'4번 div')"class='div-test div4'></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function test2(event,msg)
+        {
+            var e=event||window.event;
+
+            alert(msg);
+            e.stopPropagation();
+
+            e.cancelBubble=true;
+        }
+    </script>
+
+</body>
+</html>
